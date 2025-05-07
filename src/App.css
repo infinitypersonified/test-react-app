@@ -1,0 +1,192 @@
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.custom-hover {
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+  
+  .custom-hover:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+  .custom1-hover {
+    opacity: 0.7;
+    transition: opacity 0.1s ease-in-out;
+  }
+  
+  .custom1-hover:hover {
+    opacity: 1;
+  }
+  .custom2-hover {
+    position: relative;
+    display: inline-block;
+    color: #1f2937; /* optional text color */
+  }
+  
+  .custom2-hover::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background-color: #3b82f6; /* Tailwind's blue-500 */
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .custom2-hover:hover::after {
+    width: 100%;
+  }
+  
+  .custom3-hover {
+    color: #000000; /* original text color, eg. gray-800 */
+    transition: color 0.3s ease;
+  }
+  
+  .custom3-hover:hover {
+    color: gray; /* Tailwind's gray-500 */
+  }
+  .custom4-hover {
+    background-color: transparent; /* or your base bg */
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom4-hover:hover {
+    background-color: #d1d5db; /* Tailwind's gray-300 */
+  }
+  
+  .custom5-hover {
+    background-color: #2563eb
+    ; /* Initial background color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Initial box-shadow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .custom5-hover:hover {
+    background-color: #1d4ed8; /* Tailwind's blue-700 */
+    box-shadow: 0 10px 15px rgba(56, 189, 248, 0.3); /* Tailwind's shadow-lg with blue-100 */
+  }
+  
+  .custom6-hover {
+    transform: scale(1); /* Default scale */
+    transition: transform 0.2s ease; /* Smooth transition over 200ms */
+  }
+  
+  .custom6-hover:hover {
+    transform: scale(1.02); /* Scale up to 102% of the original size */
+  }
+  
+  .custom7-hover{
+    font-size: 0.875rem; /* Tailwind's text-sm */
+    background-color: #2563eb; /* Default background color */
+    transition: background-color 0.3s ease, font-size 0.3s ease; /* Smooth transition for both properties */
+  }
+  
+  .custom7-hover:hover{
+    background-color: #1d4ed8; /* Tailwind's blue-700 */
+    font-size: 0.875rem; /* This keeps it consistent with text-sm but can be changed for other sizes */
+  }
+
+.gap{
+
+    transition: gap 300ms;
+  }
+  
+  .gap:hover {
+    gap: 1rem; /* 1rem = 16px = Tailwind's gap-4 */
+  }
+
+  .shadow {
+    transition: box-shadow 300ms, transform 300ms;
+  }
+  
+  .shadow:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: scale(1.05);
+  }
+
+.testimonials-swiper{
+  padding:20px 0;
+}
+
+.testimonials-swiper .swiper-slide {
+  height: auto;
+}
+
+ 
+  /* Hide default Swiper navigation buttons */
+  .testimonials-swiper .swiper-button-next::after,
+  .testimonials-swiper .swiper-button-prev::after {
+    display: none;
+  }
+
+  .swiper-button-next,
+            .swiper-button-prev {
+              display: none;
+            }
+            
+            .swiper-button-next-custom.swiper-button-disabled,
+            .swiper-button-prev-custom.swiper-button-disabled {
+              opacity: 0.3;
+              cursor: not-allowed;
+            }
+
+            .btn {
+              transition: background-color 200ms ease-in-out;
+            }
+            
+            .btn:hover {
+              background-color: #16a34a; /* Tailwind's green-600 color */
+            }
+
+            /* Add these in your global CSS or inside the component's styles if you have scoped styles */
+.form-input {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #3b82f6; /* Focus border color */
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2); /* Add a soft focus glow */
+}
+
+.submit-btn {
+  padding: 12px 24px;
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  width: 100%;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #2563eb;
+}
+
+.submit-btn:active {
+  background-color: #1e40af;
+}
+
+            
+
+            
