@@ -9,10 +9,14 @@ const InTouch = ({ closeModal }) => {
   const [email, setEmail] = useState("");
   const [type, setType] = useState("");
   const [description, setDescription] = useState("");
-  const [paymentComplete, setPaymentComplete] = useState(false);
-  const [statusMessage, setStatusMessage] = useState(""); // New state for status message
+  const [statusMessage, setStatusMessage] = useState("");
 
   const handleEmailSubmission = () => {
+    if (!fullname || !email || !phone || !type || !description) {
+      setStatusMessage("Please fill in all fields before submitting.");
+      return;
+    }
+
     const serviceId = "service_0ofgazx";
     const templateId = "template_odnpojj";
     const publickey = "WyU_XURPvJOQSp9EE";
@@ -28,66 +32,22 @@ const InTouch = ({ closeModal }) => {
 
     emailjs
       .send(serviceId, templateId, templateParams, publickey)
-      .then((response) => {
-        setStatusMessage("Your request has been sent successfully!"); // Update message on success
+      .then(() => {
+        setStatusMessage("Your request has been sent successfully!");
         setFullName("");
         setEmail("");
         setPhone("");
         setType("");
         setDescription("");
-        setPaymentComplete(false);
         setTimeout(() => {
-          setStatusMessage(""); // Clear message after 5 seconds
-          closeModal(); // Optional
+          setStatusMessage("");
+          closeModal();
         }, 5000);
       })
       .catch((error) => {
-        setStatusMessage("Error sending form: " + error.message); // Display error message
+        setStatusMessage("Error sending form: " + error.message);
         console.error("Error sending email:", error);
       });
-  };
-
-  const payWithPaystack = () => {
-    if (!email || !fullname || !phone) {
-      setStatusMessage("Please fill in all required fields"); // Inform user about missing fields
-      return;
-    }
-
-    const handler = window.PaystackPop.setup({
-      key: "pk_test_b630f3d027a2b97b922e52f05b80e51cb89cfc4c",
-      email: email,
-      amount: 5000 * 100,
-      currency: "NGN",
-      metadata: {
-        custom_fields: [
-          {
-            display_name: "Full Name",
-            variable_name: "full_name",
-            value: fullname,
-          },
-          {
-            display_name: "Phone Number",
-            variable_name: "phone",
-            value: phone,
-          },
-          {
-            display_name: "Website Type",
-            variable_name: "type",
-            value: type,
-          },
-        ],
-      },
-      callback: function (response) {
-        setStatusMessage(`Payment successful! Reference: ${response.reference}`); // Update with payment success
-        setPaymentComplete(true);
-        handleEmailSubmission();
-      },
-      onClose: function () {
-        setStatusMessage("Payment cancelled. Form will not be submitted."); // Show cancel message
-      },
-    });
-
-    handler.openIframe();
   };
 
   const style = {
@@ -120,7 +80,6 @@ const InTouch = ({ closeModal }) => {
           Let's Build Your Dream Website
         </h2>
 
-        {/* Display the status message */}
         {statusMessage && (
           <div className="bg-blue-100 text-blue-700 p-4 rounded-lg mb-4 text-center">
             {statusMessage}
@@ -196,10 +155,10 @@ const InTouch = ({ closeModal }) => {
 
           <button
             type="button"
-            onClick={payWithPaystack}
+            onClick={handleEmailSubmission}
             className="bg-blue-600 text-white px-6 py-2.5 rounded-lg w-full hover:bg-blue-700 transition duration-200"
           >
-            Pay and Submit
+            Submit
           </button>
         </form>
       </div>
